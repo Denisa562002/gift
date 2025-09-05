@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎂 Ucapan untuk Rizqi — 25 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 600px;
+      z-index: 10;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    button {
+      margin: 0.5rem;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 1rem;
+      background: #333;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #555;
+    }
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      font-size: 2rem;
+      animation: rise 6s linear forwards;
+    }
+    @keyframes rise {
+      to {
+        bottom: 110%;
+        transform: translateX(calc(50vw - 50%));
+      }
+    }
+    .from-me {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #666;
+    }
+    
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="title">Happy Birthday, Rizqi! 🎉</h1>
+    <p id="message">Rizqi's turns 25 — Udah tua jan sakit sakit, kan mesti rajin kerja biar cepet sukses. 🎂</p>
+    
+    <div>
+      <button id="greet()">Greetings</button>
+      <button id="addBalloon()">Tambah Balon</button>
+      <button id="fromMe()">Dari Aku</button>
+      <button id="playSong()">Putar Lagu</button>
+    </div>
+
+    <p style="margin-top:1rem; font-size:0.9rem; color:#51230ceb;">
+     
+    </p>
+  </div>
+
+  <audio id="song" src="happy-birthday.mp3"></audio>
+
+  <script>
+    function greet() {
+      const title = document.getElementById("title");
+      const message = document.getElementById("message");
+      title.textContent = "🎂 Happy 25th Birthday, Rizqi! 🎂";
+      message.textContent = "Semoga apa yang udah kamu lewatin bisa selalu dipelajari buat versi diri kamu lebih baik ya, dan apapun yang kamu mau semoga selalu tercapai untuk jadi kebanggaan mama papa dan ana";
+    }
+
+    function addBalloon() {
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.textContent = "🎈";
+      balloon.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 6000);
+    }
+
+    function fromMe() {
+      let el = document.querySelector(".from-me");
+      if (!el) {
+        el = document.createElement("p");
+        el.className = "from-me";
+        el.textContent = "— Aku cuma mau ucapin terimakasih atas waktu singkat kemarin, ya cukup bahagia karena aku bisa mengimplementasikan diri aku yang terbaik. mungkin engga dimata kamu, tapi aku sadar juga  i'm not lacking, and you're not wrong. we're just not meant to be and hopefully we find someone who fits the way we want hehe.";
+        document.querySelector(".card").appendChild(el);
+      }
+    }
+
+
+    function playSong() {
+      const song = document.getElementById("song");
+      song.play();
+    }
+
+    // URL query (optional)
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get("to");
+    const msg = params.get("msg");
+    if (to) document.getElementById("title").textContent = `Happy Birthday, ${to}! 🎉`;
+    if (msg) document.getElementById("message").textContent = msg;
+  </script>
+</body>
+</html>
